@@ -5,6 +5,7 @@ from django.conf import settings
 import os
 import json
 
+
 def add_users(apps, schema_editor):
     if settings.DEBUG:
         Employee = apps.get_model("employee_app", "Employee")

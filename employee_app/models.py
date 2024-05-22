@@ -1,10 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, UserManager
 
+
 class Role(models.TextChoices):
     SALES = "Sales", "Sales"
     PROCUREMENT = "Procurement", "Procurement"
     HR = "HR", "Human Resource"
+
 
 class Employee(AbstractBaseUser):
     username = models.CharField(unique=True)
@@ -33,4 +35,3 @@ class Employee(AbstractBaseUser):
 
     USERNAME_FIELD = "username"
     REQUIRED_FIELDS = ["name", "role"]
-
