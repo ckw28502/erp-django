@@ -6,9 +6,5 @@ WORKDIR /app
 COPY requirements.txt /app
 RUN pip3 install -r requirements.txt --no-cache-dir
 COPY . /app 
-RUN echo "#!/bin/bash" >> /app/docker-entrypoint.sh
-RUN echo "python manage.py migrate" >> /app/docker-entrypoint.sh
-RUN echo "python manage.py runserver 0.0.0.0:8000" >> /app/docker-entrypoint.sh
-RUN chmod +x /app/docker-entrypoint.sh
 ENTRYPOINT ["wait-for-it", "db:5432", "--"] 
-CMD ["/app/docker-entrypoint.sh"]
+CMD ["/app/runserver.sh"]

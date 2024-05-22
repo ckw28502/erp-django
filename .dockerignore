@@ -28,4 +28,7 @@ venv/
 Thumbs.db
 
 # migrations
-**/migrations/*.py
+**/migrations/*_insert_*.py
+
+# batch files
+*.bat
