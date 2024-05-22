@@ -1,0 +1,20 @@
+[
+    {
+        "username": "sales",
+        "password": "sales",
+        "name": "Sales",
+        "role": "SALES"
+    },
+    {
+        "username": "procurement",
+        "password": "procurement",
+        "name": "Procurement",
+        "role": "PROCUREMENT"
+    },
+    {
+        "username": "hr",
+        "password": "hr",
+        "name": "HR",
+        "role": "HR"
+    }
+]
