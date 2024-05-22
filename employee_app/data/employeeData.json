@@ -1,18 +1,21 @@
 [
     {
         "username": "sales",
+        "email": "sales@email.com",
         "password": "sales",
         "name": "Sales",
         "role": "SALES"
     },
     {
         "username": "procurement",
+        "email": "procurement@email.com",
         "password": "procurement",
         "name": "Procurement",
         "role": "PROCUREMENT"
     },
     {
         "username": "hr",
+        "email": "hr@email.com",
         "password": "hr",
         "name": "HR",
         "role": "HR"
