@@ -11,7 +11,7 @@ class Role(models.TextChoices):
 class Employee(AbstractBaseUser):
     username = models.CharField(unique=True)
     name = models.CharField()
-    email = models.CharField()
+    email = models.CharField(unique=True)
     role = models.CharField(choices=Role.choices)
 
     is_active = models.BooleanField(default=True)

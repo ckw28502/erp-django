@@ -1,23 +1,23 @@
 [
     {
-        "username": "sales",
-        "email": "sales@email.com",
-        "password": "sales",
-        "name": "Sales",
+        "username": "user1",
+        "email": "user1@email.com",
+        "password": "user1",
+        "name": "User1",
         "role": "SALES"
     },
     {
-        "username": "procurement",
-        "email": "procurement@email.com",
-        "password": "procurement",
-        "name": "Procurement",
+        "username": "user2",
+        "email": "user2@email.com",
+        "password": "user2",
+        "name": "User2",
         "role": "PROCUREMENT"
     },
     {
-        "username": "hr",
-        "email": "hr@email.com",
-        "password": "hr",
-        "name": "HR",
+        "username": "user3",
+        "email": "user3@email.com",
+        "password": "user3",
+        "name": "User3",
         "role": "HR"
     }
 ]

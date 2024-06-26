@@ -3,4 +3,9 @@
 set -e
 
 python -m manage migrate
-python -m manage runserver
+
+if [ "$1" = "prod" ]; then
+    python -m manage runserver 0.0.0.0:8000
+else
+    python -m manage runserver
+fi

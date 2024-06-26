@@ -20,6 +20,7 @@ def add_users(apps, schema_editor):
         for employee in employee_data:
             Employee.objects.create_user(
                 username=employee["username"],
+                email=employee["email"],
                 password=employee["password"],
                 name=employee["name"],
                 role=employee["role"]
