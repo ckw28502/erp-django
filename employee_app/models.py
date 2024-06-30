@@ -9,15 +9,15 @@ class Role(models.TextChoices):
 
 
 class Employee(AbstractBaseUser):
-    username = models.CharField(unique=True)
-    name = models.CharField()
-    email = models.CharField(unique=True)
-    role = models.CharField(choices=Role.choices)
+    username: str = models.CharField(unique=True)
+    name: str = models.CharField()
+    email: str = models.CharField(unique=True)
+    role: str = models.CharField(choices=Role.choices)
 
-    is_active = models.BooleanField(default=True)
-    is_staff = models.BooleanField(default=False)
-    is_admin = models.BooleanField(default=False)
-    is_superuser = models.BooleanField(default=False)
+    is_active: bool = models.BooleanField(default=True)
+    is_staff: bool = models.BooleanField(default=False)
+    is_admin: bool = models.BooleanField(default=False)
+    is_superuser: bool = models.BooleanField(default=False)
 
     groups = models.ManyToManyField(
         "auth.Group",
