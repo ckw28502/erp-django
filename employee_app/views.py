@@ -11,5 +11,6 @@ class RoleView(APIView):
     def get(self, request: Request) -> Response:
         employee: Employee = request.user
         role: str = employee.role
+        response: dict = {"role": role}
 
-        return Response(role)
+        return Response(response)

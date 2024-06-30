@@ -33,9 +33,11 @@ class RoleViewTest(TestCase):
             )
             token: tuple = Token.objects.get_or_create(user=employee)
             self.client.credentials(HTTP_AUTHORIZATION=f"Token {token[0].key}")
-            response: Response = self.client.get("/employees/role/")
+            expected_response: dict = {"role": role}
 
-            self.assertEqual(response.status_code, 200)
-            self.assertEqual(response.json(), role)
+            actual_response: Response = self.client.get("/employees/role/")
+
+            self.assertEqual(actual_response.status_code, 200)
+            self.assertEqual(expected_response, actual_response.json())
 
             index += 1
