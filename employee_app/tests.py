@@ -10,7 +10,7 @@ class RoleViewTest(TestCase):
     client: APIClient
     username: str
     password: str
-    roles: list[str]
+    roles: list[Role]
 
     def setUp(self) -> None:
         self.client = APIClient()
@@ -24,20 +24,19 @@ class RoleViewTest(TestCase):
         self.assertEqual(response.status_code, 401)
 
     def test_get_role(self) -> None:
-        index: int = 1
-        for role in self.roles:
+        for i in range(len(self.roles)):
+            role: Role = self.roles[i]
             employee: Employee = get_user_model().objects.create_user(
-                username=f"{self.username}{index}",
+                username=f"{self.username}{i}",
+                email=f"{self.username}{i}@email.com",
                 password=self.password,
                 role=role
             )
-            token: tuple = Token.objects.get_or_create(user=employee)
-            self.client.credentials(HTTP_AUTHORIZATION=f"Token {token[0].key}")
-            expected_response: dict = {"role": role}
+            token: Token = Token.objects.create(user=employee)
+            self.client.credentials(HTTP_AUTHORIZATION=f"Token {token.key}")
+            expected_response: dict = {"role": role.label}
 
             actual_response: Response = self.client.get("/employees/role/")
 
             self.assertEqual(actual_response.status_code, 200)
             self.assertEqual(expected_response, actual_response.json())
-
-            index += 1
