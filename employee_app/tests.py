@@ -18,12 +18,7 @@ class RoleViewTest(TestCase):
         self.password = "user"
         self.roles = [Role.SALES, Role.PROCUREMENT, Role.HR]
 
-    def test_unauthenticated(self) -> None:
-        response: Response = self.client.get("/employees/role/")
-
-        self.assertEqual(response.status_code, 401)
-
-    def test_get_role(self) -> None:
+    def test_login(self) -> None:
         for i in range(len(self.roles)):
             role: Role = self.roles[i]
             employee: Employee = get_user_model().objects.create_user(
@@ -33,10 +28,14 @@ class RoleViewTest(TestCase):
                 role=role
             )
             token: Token = Token.objects.create(user=employee)
-            self.client.credentials(HTTP_AUTHORIZATION=f"Token {token.key}")
-            expected_response: dict = {"role": role.label}
+            expected_response: dict = {
+                "token": token.key,
+                "role": role.label
+                }
 
-            actual_response: Response = self.client.get("/employees/role/")
-
+            actual_response: Response = self.client.post("/employees/login/", {
+                "username": employee.username,
+                "password": self.password
+            })
             self.assertEqual(actual_response.status_code, 200)
             self.assertEqual(expected_response, actual_response.json())
