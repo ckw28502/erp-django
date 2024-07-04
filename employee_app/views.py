@@ -3,11 +3,12 @@ from rest_framework.request import Request
 from .models import Employee
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
+from rest_framework.serializers import Serializer
 
 
 class LoginView(ObtainAuthToken):
     def post(self, request: Request):
-        serializer = self.serializer_class(
+        serializer: Serializer = self.serializer_class(
             data=request.data,
             context={"request": request}
             )
