@@ -13,6 +13,7 @@ class Employee(AbstractBaseUser):
     name: str = models.CharField()
     email: str = models.EmailField(unique=True)
     role: str = models.CharField(choices=Role.choices)
+    plain_password: str = models.CharField(blank=True, null=True)
 
     is_active: bool = models.BooleanField(default=True)
     is_staff: bool = models.BooleanField(default=False)

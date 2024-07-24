@@ -4,6 +4,9 @@ from .models import Employee
 from rest_framework.authtoken.views import ObtainAuthToken
 from rest_framework.authtoken.models import Token
 from rest_framework.serializers import Serializer
+from rest_framework.views import APIView
+from .serializers import EmployeeSerializer
+from rest_framework import status
 
 
 class LoginView(ObtainAuthToken):
@@ -19,3 +22,10 @@ class LoginView(ObtainAuthToken):
             "token": token.key,
             "role": employee.get_role_display()
         })
+
+class EmployeeView(APIView):
+    def post(self, request: Request) -> Response:
+        serializer: Serializer = EmployeeSerializer(data=request.data)
+        if serializer.is_valid(raise_exception=True):
+            response_body: dict = serializer.save()
+            return Response(response_body, status=status.HTTP_201_CREATED)
