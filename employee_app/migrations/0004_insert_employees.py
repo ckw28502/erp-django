@@ -30,7 +30,7 @@ def add_users(apps, schema_editor):
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('employee_app', '0002_alter_employee_email'),
+        ('employee_app', '0003_alter_employee_role'),
     ]
 
     operations = [

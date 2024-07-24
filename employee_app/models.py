@@ -3,8 +3,8 @@ from django.contrib.auth.models import AbstractBaseUser, UserManager
 
 
 class Role(models.TextChoices):
-    SALES = "Sales", "Sales"
-    PROCUREMENT = "Procurement", "Procurement"
+    SALES = "SALES", "Sales"
+    PROCUREMENT = "PROCUREMENT", "Procurement"
     HR = "HR", "Human Resource"
 
 

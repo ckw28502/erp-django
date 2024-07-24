@@ -7,7 +7,7 @@ from rest_framework.serializers import Serializer
 
 
 class LoginView(ObtainAuthToken):
-    def post(self, request: Request):
+    def post(self, request: Request) -> Response:
         serializer: Serializer = self.serializer_class(
             data=request.data,
             context={"request": request}
